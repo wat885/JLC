@@ -1,0 +1,34 @@
+.post-container {
+  margin: 0 20% 0 20%;
+}
+
+.post-item {
+  background-color: white;
+}
+
+.user {
+  display: flex;
+  padding: 10px;
+}
+
+.user img {
+  width: 30px;
+  border-radius: 50%;
+}
+
+.user-name {
+  color: Orange;
+}
+
+.time {
+  color: grey;
+}
+
+.content {
+  display: flex;
+  margin: 10px;
+}
+
+.right-content {
+  margin: 10px;
+}
