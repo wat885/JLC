@@ -8,70 +8,45 @@ function Post() {
   const [posts, setPosts] = useState([...postData]);
   const [authors, setAuthors] = useState([...authorsData]);
 
+  // console.log(posts);
+  // console.log(authors);
 
-
-  console.log(posts);
-  console.log(authors);
-
-
-
+  function getAuthorData(id) {
+    const data = authors.filter((item) => {
+      return id === item.id;
+    });
+    return data[0]
+  }
 
   return (
     <div className="post-container">
       <h2>Your current timezone is: Asia/Bangkok</h2>
       <div className="post-group">
-        {posts.map((post, index) => {
-          if (index % 2 === 0) {
-            return (
-              <div className="post-item" key={post.id}>
-                <div className="user">
-                  <img
-                    src={authors[post.author_id - 1].avatar_url}
-                    alt="avatar"
-                  />
-                  <h4 className="user-name">
-                    {authors[post.author_id - 1].name}{" "}
-                    <span className="time">
-                      posted on {convertDate(post.created_at)}{" "}
-                    </span>
-                  </h4>
-                </div>
-                <hr />
-                <div className="content">
-                  <img src={post.image_url} />
-                  <div className="right-content">
-                    <h3 className="toppic">{post.title}</h3>
-                    <p>{post.body}</p>
-                  </div>
+        {posts.map((post) => {
+          const author = getAuthorData(post.author_id);
+
+          return (
+            <div className="post-item" key={post.id}>
+              <div className="user">
+                <img src={author.avatar_url} alt="avatar" />
+                <h4 className="user-name">
+                  {author.name}{" "}
+                  <span className="time">
+                    posted on {convertDate(post.created_at)}{" "}
+                  </span>
+                </h4>
+              </div>
+
+              <hr />
+              <div className="content">
+                <img src={post.image_url} />
+                <div className="right-content">
+                  <h3 className="toppic">{post.title}</h3>
+                  <p>{post.body}</p>
                 </div>
               </div>
-            );
-          } else {
-            return (
-              <div className="add-color" key={post.id}>
-                <div className="user">
-                  <img
-                    src={authors[post.author_id - 1].avatar_url}
-                    alt="avatar"
-                  />
-                  <h4 className="user-name">
-                    {authors[post.author_id - 1].name}{" "}
-                    <span className="time">
-                      posted on {convertDate(post.created_at)}{" "}
-                    </span>
-                  </h4>
-                </div>
-                <hr />
-                <div className="content">
-                  <img src={post.image_url} />
-                  <div className="right-content">
-                    <h3 className="toppic">{post.title}</h3>
-                    <p>{post.body}</p>
-                  </div>
-                </div>
-              </div>
-            );
-          }
+            </div>
+          );
         })}
       </div>
     </div>
@@ -127,7 +102,5 @@ function convertDate(dateString) {
   // console.log(formattedDate);
   return formattedDate;
 }
-
-
 
 export default Post;

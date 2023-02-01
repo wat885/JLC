@@ -1,12 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "Jason Bourne",
-    "role": "Registered user",
-    "place": "New York",
-    "avatar_url": "https://randomuser.me/api/portraits/men/1.jpg"
-  },
-  {
     "id": 2,
     "name": "Michael De Santa",
     "role": "Moderator",
@@ -34,6 +27,14 @@
     "place": "Gondor",
     "avatar_url": "https://randomuser.me/api/portraits/men/5.jpg"
   },
+  {
+    "id": 1,
+    "name": "Jason Bourne",
+    "role": "Registered user",
+    "place": "New York",
+    "avatar_url": "https://randomuser.me/api/portraits/men/1.jpg"
+  },
+
   {
     "id": 6,
     "name": "Bruce Wayne",

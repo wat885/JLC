@@ -12,6 +12,10 @@
 
 }
 
+.post-item:nth-child(even) {
+  background-color: #ccecff;
+}
+
 .add-color {
   background-color: #ccecff;
 }
@@ -19,6 +23,7 @@
 .user {
   display: flex;
   padding: 10px;
+  align-items: center;;
 }
 
 .user img {
@@ -28,6 +33,7 @@
 
 .user-name {
   color: Orange;
+  margin-left: 5px;
 }
 
 .time {
