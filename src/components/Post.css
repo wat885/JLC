@@ -2,8 +2,18 @@
   margin: 0 20% 0 20%;
 }
 
+.post-container h2 {
+  padding: 10px 0 10px 0;
+}
+
 .post-item {
   background-color: white;
+  margin: 10px 0 10px 0;
+
+}
+
+.add-color {
+  background-color: #ccecff;
 }
 
 .user {
@@ -28,6 +38,13 @@
   display: flex;
   margin: 10px;
 }
+
+
+.content img {
+  margin-bottom: 10px;
+}
+
+
 
 .right-content {
   margin: 10px;

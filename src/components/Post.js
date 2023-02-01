@@ -8,38 +8,70 @@ function Post() {
   const [posts, setPosts] = useState([...postData]);
   const [authors, setAuthors] = useState([...authorsData]);
 
+
+
   console.log(posts);
   console.log(authors);
 
-  console.log(authors[1].avatar_url);
+
+
 
   return (
     <div className="post-container">
       <h2>Your current timezone is: Asia/Bangkok</h2>
       <div className="post-group">
-        {posts.map((post) => {
-          return (
-            <div className="post-item" key={post.id}>
-              <div className="user">
-                <img
-                  src={authors[post.author_id - 1].avatar_url}
-                  alt="avatar"
-                />
-                <h4 className="user-name">
-                  {authors[post.author_id - 1].name}{" "}
-                </h4>
-                <h4 className="time">posted on {convertDate(post.created_at)} </h4>
-              </div>
-              <hr />
-              <div className="content">
-                <img src={post.image_url} />
-                <div className="right-content">
-                  <h3 className="toppic">{post.title}</h3>
-                  <p>{post.body}</p>
+        {posts.map((post, index) => {
+          if (index % 2 === 0) {
+            return (
+              <div className="post-item" key={post.id}>
+                <div className="user">
+                  <img
+                    src={authors[post.author_id - 1].avatar_url}
+                    alt="avatar"
+                  />
+                  <h4 className="user-name">
+                    {authors[post.author_id - 1].name}{" "}
+                    <span className="time">
+                      posted on {convertDate(post.created_at)}{" "}
+                    </span>
+                  </h4>
+                </div>
+                <hr />
+                <div className="content">
+                  <img src={post.image_url} />
+                  <div className="right-content">
+                    <h3 className="toppic">{post.title}</h3>
+                    <p>{post.body}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
+            );
+          } else {
+            return (
+              <div className="add-color" key={post.id}>
+                <div className="user">
+                  <img
+                    src={authors[post.author_id - 1].avatar_url}
+                    alt="avatar"
+                  />
+                  <h4 className="user-name">
+                    {authors[post.author_id - 1].name}{" "}
+                    <span className="time">
+                      posted on {convertDate(post.created_at)}{" "}
+                    </span>
+                  </h4>
+                </div>
+                <hr />
+                <div className="content">
+                  <img src={post.image_url} />
+                  <div className="right-content">
+                    <h3 className="toppic">{post.title}</h3>
+                    <p>{post.body}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          }
         })}
       </div>
     </div>
@@ -59,24 +91,43 @@ function convertDate(dateString) {
     "Saturday",
   ];
   let day = days[date.getUTCDay()];
-  let month = date.getUTCMonth();
-  let year = date.getUTCFullYear();
-  let hours = date.getUTCHours();
-  let minutes = date.getUTCMinutes();
+  let shortMonths = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let shortMonth = shortMonths[date.getMonth()];
+  let year = date.getFullYear();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  // console.log("hours", hours);
+  let formattedHours = hours.toString().padStart(2, "0");
+  let formattedMinutes = minutes.toString().padStart(2, "0");
   let formattedDate =
     day +
     ", " +
-    month +
+    shortMonth +
     " " +
-    date.getUTCDate() +
+    date.getDate() +
     ", " +
     year +
     ", " +
-    hours +
+    formattedHours +
     ":" +
-    minutes;
-  console.log(formattedDate);
+    formattedMinutes;
+  // console.log(formattedDate);
   return formattedDate;
 }
+
+
 
 export default Post;
